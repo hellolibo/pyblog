@@ -1,0 +1,80 @@
+﻿$def with (content)
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="$content.description" />
+    <meta name="keywords" content="$content.keywords" />
+    <title>$content.title</title>
+    <link rel="stylesheet"  href="/static/global.css" />
+    <link rel="stylesheet" type="text/css" href="/static/syntaxhighlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/static/syntaxhighlighter/styles/shCoreDefault.css" media="all">
+    <link rel="alternate"   title="RSS Feed" href="/rss">
+    <script src="/static/js/jquery.js"></script>
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <link rel="stylesheet"  href="/static/ie.css" />
+    <![endif]-->
+</head>
+<body>
+    <header class="site">
+        <hgroup>
+            <h1><a href="$blog.urlpath">$blog.blogtitle</a></h1>
+            <h2>$blog.subtitle</h2>
+        </hgroup>
+    </header>
+    <section class="container_">
+       $:content 
+    </section>
+    <section class="side">
+        <dl>
+            <dt>
+                <h2>分类</h2>
+            </dt>
+            <dd>
+                <ul>
+                $for cate in category:
+                    <li><a href="/category/$cate.slug">$cate.title</a><span>($cate.count)</span></li>
+                </ul>
+            </dd>
+            <dt>
+                <h2>最新评论</h2>
+            </dt>
+            <dd>
+                <ul>
+                $for comm in newcomment:
+                    <li><a href="${comm.articlelink}#comment-$comm.id">$comm.author</a>:$comm.shortcontent</li>
+                </ul>
+            </dd>
+            <dt>
+                <h2>标签</h2>
+            </dt>
+            <dd>
+                $for tag in tags:
+                    <a href="/tag/$tag['tag']" style="font-size:${tag['size']}px" title="${tag['tagcount']} pages">$tag['tag']</a>
+            </dd>
+            <dt>
+                <h2>归档</h2>
+            </dt>
+            <dd>
+                <ul>
+                $for ar in archives:
+                    <li><a href="/$ar.year/$ar.month">$ar.year年$ar.month月($ar.articlecount)</a></li>
+                </ul>
+            </dd>
+                <dt>
+                    <h2>链接</h2>
+                </dt>
+                <dd>
+                    <ul>
+                    $for link in links:
+                        <li><a href="$link.href">$link.title</a></li>
+                    </ul>
+                </dd>
+        </dl>
+    </section>
+    <footer>
+    &copy;2009-2011 made whith <a href="http://webpy.org">web.py</a> <a href="http://www.mysql.com/">MySQL</a> <a href="http://www.python.org/">python</a>
+    </footer>
+</body>
+</html>

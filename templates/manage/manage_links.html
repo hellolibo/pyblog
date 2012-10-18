@@ -1,0 +1,29 @@
+$def with(page,view)
+$var title:链接列表
+
+<div class="sub_nav"></div>
+<div class="title"><h1>所有链接 (<a href="/manage/links/edit">新建</a>)</h1></div>
+	<div class="active">
+	文章总数:$page['links_count']       <a href="javascript:void(0);" onclick="del('/manage/links/del?id=')">删除选中</a>
+	</div>
+	<table>
+		<tr>
+			<th><input type="checkbox" name="select_all" id="select_all" /></th>
+			<th>名称</th>
+			<th>地址</th>
+			<th>添加时间</th>
+			<th>备注</th>
+		</tr>
+	$for item in page['links']:
+		<tr>
+			<td><input type="checkbox" name="sel_item" id="links_sel_${item.id}" value='${item.id}'/></td>
+			<td>[<a href="/manage/links/edit?key=$item.id">编辑</a>]$item.title</td>
+			<td><a href="$item.href" target="_blank">$item.href</a></td>
+			<td>
+			${item.addTime.strftime('%Y-%m-%d')}
+			</td>
+			<td>
+			$item.remark
+			</td>
+		</tr>
+	</table>

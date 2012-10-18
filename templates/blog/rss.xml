@@ -1,0 +1,45 @@
+$def with(page,veiw)
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>$blog.blogtitle</title>
+	<atom:link href="${blog.urlpath}/feed" rel="self" type="application/rss+xml" />
+	<link>${blog.urlpath}</link>
+	<description>${blog.description}</description>
+	<lastBuildDate>$page['last_updated']</lastBuildDate>
+	<language>zh-cn</language>
+	<sy:updatePeriod>daily</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>Webpy-Python</generator>
+	$for item in page['articles']:
+		<item>
+			<title>$item.title</title>
+			<link>${blog.urlpath}${item.link}</link>
+			<comments>${blog.urlpath}/${item.link}#comments</comments>
+			<pubDate>$item.formatted_date</pubDate>
+			<dc:creator>$item.author_name</dc:creator>
+			$for cate in item.categories
+				<category><![CDATA[$cate.title]]></category>
+			<guid isPermaLink="false">$blog.urlpath/page/$itme.post_id</guid>
+			<description><![CDATA[$item.summary]]></description>
+			<content:encoded><![CDATA[$item.content
+				$if item.relateposts:
+					<h4>相关阅读</h4>
+					<ul>
+					$for post in item.relateposts:
+						<li><a href="${blog.urlpath}${post.link}">$post.title</a></li>
+					</ul>
+				<p>本文网址:<a href="${blog.urlpath}${item.link}">${blog.urlpath}${item.link}</a></p>]]></content:encoded>
+				<wfw:commentRss>${blog.urlpath}/feed/comments</wfw:commentRss>
+			<slash:comments>$item.comment_count</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,11 @@
+Options +ExecCGI 
+AddHandler cgi-script .py
+
+<IfModule mod_rewrite.c>      
+  RewriteEngine on
+  RewriteBase /
+  RewriteRule ^static/(.*)$  static/$1 [L]
+  RewriteRule ^upfile/(.*)$  upfile/$1 [L]
+  RewriteCond %{REQUEST_URI} !^(/.*)+blog.py/
+  RewriteRule ^(.*)$ blog.py/$1 [PT]
+</IfModule>

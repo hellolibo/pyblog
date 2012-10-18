@@ -1,0 +1,23 @@
+﻿$def with(page,view)
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+</head>
+<body>
+    $if page['error'] and len(page['error'])>0 or False:
+        <div class="msg">
+            <ol>
+            $for er in page['error']:
+                <li>$er</li>
+            </ol>
+        </div>
+    <form action="/login" method="post">
+        <label for="username">用户名：<input type="text" name="f_uname" id="" size="12"/></label>
+        <label for="password">密码：<input type="password" name="f_pwd" id="" size="12"/></label>
+        <input type="hidden" name="f_referer" value="${page['referer']}"/>
+        <input type="submit" value="登录"/>
+    </form>
+</body>
+</html>

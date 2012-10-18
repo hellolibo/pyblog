@@ -1,0 +1,38 @@
+$def with(page,view)
+$var title:文章列表
+
+<div class="sub_nav"></div>
+<div class="title"><h1>所有文章 (<a href="/manage/article/edit">新建</a>)</h1></div>
+	<div class="active">
+	文章总数:$page['articles_count']       <a href="javascript:void(0);" onclick="del('/manage/article/del?id=')">删除选中</a>
+	</div>
+	<table>
+		<tr>
+			<th><input type="checkbox" name="select_all" id="select_all" /></th>
+			<th>日期</th>
+			<th>标题</th>
+			<th>状态</th>
+			<th>评论</th>
+		</tr>
+	$for item in page['articles']:
+		<tr>
+			<td><input type="checkbox" name="sel_item" id="article_sel_${item.id}" value='${item.id}'/></td>
+			<td>${item.addTime.strftime('%Y-%m-%d')}</td>
+			<td>[<a href="/manage/article/edit?id=$item.id">编辑</a>]<a href="$item.link" target="_blank">$item.title</a></td>
+			<td>
+			$if item.published:
+				发布
+			$else:
+				未发布
+			</td>
+			<td>
+			$if item.isComment:
+				开启($item.comment_count)
+			$else:
+				未开启
+			</td>
+		</tr>
+	</table>
+	<div class="pages">
+	$:page['pages']
+	</div>

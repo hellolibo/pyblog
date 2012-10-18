@@ -1,0 +1,41 @@
+$def with(page,view)
+$var title:编辑配置信息
+<div class="sub_nav"></div>
+<div class="title"><h1>编辑配置信息</h1></div>
+	<div class="active">
+	</div>
+	$if page['error'] and len(page['error'])>0 or False:
+		<div class="msg">
+			<ol>
+			$for er in page['error']:
+				<li>$er</li>
+			</ol>
+		</div>
+		<a href="javascript:history.go(-1);">返回</a>
+	$else:
+		<form action="" name="config_form" method="post">
+			<table>
+				<tr>
+					<td>博客标题：</td>
+					<td>
+					<input type="text" name="f_blogtitle" id="f_blogtitle" width="500" value="$page['formdata']['blogtitle']"/>
+					</td>
+				</tr>
+				<tr>
+					<td>副标题：</td>
+					<td><input type="text" name="f_subtitle" id="f_subtitle" style="width:500px" value="$page['formdata']['subtitle']"/></td>
+				</tr>
+				<tr>
+					<td>博客简介：</td>
+					<td><textarea name="f_description" id="f_description" style="width:500px;height:200px;">${page['formdata']['description']}</textarea></td>
+				</tr>
+				<tr>
+					<td>博客网址：</td>
+					<td><input type="text" name="f_urlpath" id="f_urlpath" value="$page['formdata']['urlpath']" style="width:100px"/></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"><input type="submit" value="提交" /></td>
+				</tr>
+			</table>
+		</form>

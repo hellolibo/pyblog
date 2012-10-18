@@ -1,0 +1,41 @@
+$def with(page,view)
+$var title:文件列表
+
+<div class="sub_nav"></div>
+<div class="title"><h1>所有文件</h1></div>
+	<table>
+		<tr>
+			<td colspan="6">
+			<h3>上传文件：</h3>
+				<form action="/manage/upload" method="post" enctype="multipart/form-data">
+					<input type="file" name="f_file" id="f_file" />
+					<input type="submit" value="上传" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<div class="active">
+	文件总数:$page['medias_count']       <a href="javascript:void(0);" onclick="del('/manage/media/del?id=')">删除选中</a>
+	</div>
+	<table>
+		<tr>
+			<th><input type="checkbox" name="select_all" id="select_all" /></th>
+			<th>文件名称</th>
+			<th>文件大小</th>
+			<th>上传时间</th>
+			<th>下载次数</th>
+			<th>下载</th>
+		</tr>
+	$for item in page['medias']:
+		<tr>
+			<td><input type="checkbox" name="sel_item" id="file_sel_${item.id}" value='${item.id}'/></td>
+			<td><a href="${item.url}" target="_blank">$item.name</a></td>
+			<td>$item.size</td>
+			<td>${item.addTime.strftime('%Y-%m-%d')}</td>
+			<td>$item.download</td>
+			<td><a href="/media/${item.id}/${item.name}?a=download" target="_blank">下载</a></td>
+		</tr>
+	</table>
+	<div class="pages">
+	$:page['pages']
+	</div>

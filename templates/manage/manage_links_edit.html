@@ -1,0 +1,37 @@
+$def with(page,view)
+$var title:编辑链接
+
+<div class="sub_nav"></div>
+<div class="title"><h1>编辑链接</h1></div>
+	<div class="active">
+	<a href="/manage/links">返回列表</a>
+	</div>
+	$if page['error'] and len(page['error'])>0 or False:
+		<div class="msg">
+			<ol>
+			$for er in page['error']:
+				<li>$er</li>
+			</ol>
+		</div>
+		<a href="javascript:history.go(-1);">返回</a>
+	$else:
+		<form action="" name="link_form" method="post">
+			<table>
+				<tr>
+					<td>链接名称：</td>
+					<td><input type="text" name="f_title" id="f_title" style="width:200px" value="$page['formdata']['title']"/></td>
+				</tr>
+				<tr>
+					<td>链接地址：</td>
+					<td><input type="text" name="f_href" id="f_href" style="width:200px" value="$page['formdata']['href']"/></td>
+				</tr>
+				<tr>
+					<td>备注：</td>
+					<td><textarea name="f_remark" id="f_remark" cols="30" rows="4">$page['formdata']['remark']</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="提交" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="f_id" value="${page['formdata']['id']}"/>
+		</form>

@@ -1,0 +1,348 @@
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://ericmeyer.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+   If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
+img,
+object,
+embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+ 
+/* Accessible focus treatment
+	people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {outline: none;}
+
+small {font-size: 85%;}
+
+strong, th {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.clearfix:after { clear: both; }  
+.clearfix { zoom: 1; }  
+
+
+
+/* Ok, this is where the fun starts.
+-------------------------------------------------------------------------------*/
+
+/* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
+body {font: 13px Helmet, Freesans, sans-serif;}
+
+/* using local fonts? make sure to read up on Paul Irish's 
+	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
+
+/* we like off-black for text */
+body, select, input, textarea {color: #333;}
+
+a {color: #03f;}
+a:hover {color: #69f;}
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+ins {background-color: #fcd700; color: #000; text-decoration: none;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+
+
+
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+
+
+
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+	
+		
+}
+
+@media all and (orientation: portrait) {
+	
+}
+
+@media all and (orientation: landscape) {
+	
+}
+
+
+
+body{font:1.2em Georgia,"Times New Roman",Times,serif;text-align:center;}
+a{color:#005cb2;text-decoration:none;}
+a:hover{text-decoration:underline;color:#ff4b33;}
+
+.site {height:61px;margin:0 auto 20px auto;border-bottom:1px solid #ddd;text-align:left;padding:20px 30px;background:#efefef;min-width:960px;}
+.site hgroup {padding:12px 0 0 250px;background:url(pic/top_pic.png) left top no-repeat;height:61px;width: 200px;}
+.site h1 {font-size:24px;font-weight:normal;margin-bottom:4px;font-family:PMingLiU, Verdana;}
+.site h1 a{color:#333}
+.site h2 {font-size:12px;font-weight:normal;color:#999}
+.container_ {width:770px;text-align:left;margin:10px auto;display:inline-block;vertical-align:top;}
+.side {width:170px;display:inline-block;text-align:left;margin:10px 0 0 20px;}
+.side dt{border-bottom:1px solid #ddd;padding-bottom:10px;}
+.side dt h2{font-size:14px;text-indent:10px;color:#484848;font-weight:normal;}
+.side dd{margin-bottom:20px;padding:10px;font-size:12px;line-height:160%;}
+
+#art-list article {margin:0 0 30px 0;}
+#art-list article header.head {margin-bottom:10px;}
+#art-list article header h1{font-size:16px;}
+#art-list article header h2{font-size:11px;color:#b1b1b1;font-weight:normal;margin-top:5px;}
+#art-list article .shortcon{font-size:14px;line-height:1.7em;}
+#art-list aside{font-size:12px;margin-top:15px;color:#b1b1b1}
+.pages {margin:30px 0;}
+.pages strong,.pages a{display:inline-block;margin-right:5px;padding:6px 10px;border:1px solid #ddd;text-align:center;font-size:14px;background-color:#efefef}
+footer {margin:10px auto 0 auto;padding:10px 20px 30px 20px;border-top:1px solid #efefef;font-size:11px;text-align:right;color:#b1b1b1;min-width:960px;}
+footer a{color:#888;}
+
+.art_list header{margin-bottom:10px;font-size:16px;padding-bottom:10px;}
+.art_list li {font-size:14px;padding:5px 0;}
+.art_list .postdate{padding-left:10px;font-size:11px;color:#999}
+.art_list .commentcount{padding-left:10px;font-size:11px;color:#999}
+
+#art_con .nav {margin-bottom:30px;display:-moz-box;display:-webkit-box;}
+#art_con .nav div{-moz-box-sizing:border-box;-webkit-box-sizing:boorder-box;width:385px;font-size:12px;}
+#art_con .nav .n_l{text-align:left;}
+#art_con .nav .n_r{text-align:right;}
+
+.art_head {margin-bottom:15px;}
+.art_head h1{font-size:16px;}
+.art_head h2{color:#999;font-size:12px;font-weight:normal;margin-top:8px;}
+.art_detail {line-height:170%;font-size:14px;}
+.relat {margin:20px 0;font-size:12px;}
+.relat ul{padding:10px 0 0 30px;}
+.relat li{height:22px;line-height:22px;list-style-type:disc;}
+.tags {border-bottom:1px solid #efefef;padding:10px 0;font-size:12px;color:#999;}
+#comment {margin:30px 0;}
+#comment header{margin-bottom:10px;font-size:12px;}
+#comment_list li {padding:10px;display:box;display:-moz-box;display:-webkit-box;font-size:12px;line-height:160%;border-radius:6px 6px 6px 6px;margin-bottom:10px;}
+#comment_list li:nth-child(odd){background-color:#efefef;}
+#comment_list li:nth-child(even){border:1px solid #efefef;}
+#comment_list .face {width:70px;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+#comment_list .comm {width:680px}
+#comment_list .comm .head{margin-bottom:6px;color:#999;}
+
+#comm_form {font-size:12px;}
+#comm_form h3{font-size:14px;margin-bottom:10px;}
+#comm_form form div{margin-bottom:10px;color:#999;}
+#comm_form button {font-size:14px;}
+/* face */
+.face-box {
+border-radius: 3px;
+box-shadow: rgba(0, 0, 0, 0.796875) 0px 0px 1px inset, rgba(255, 255, 255, 0.496094) 0px 2px 0px inset, rgba(0, 0, 0, 0.398438) 0px -1px 0px inset, rgba(0, 0, 0, 0.398438) 0px 1px 3px;
+background-position: 50% 50%;
+background-repeat: no-repeat no-repeat;
+}
+/* button  */
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .3em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+.medium {
+	font-size: 12px;
+	padding: .4em 1.5em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+/* orange */
+.orange {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+/* white */
+.white {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+
+/*input*/
+:focus{
+	outline:none;
+}
+input{
+	vertical-align: middle;
+
+}
+input[type="text"],input[type="password"],input.text,textarea{
+	background: none;
+	font-size:12px;
+	padding:5px;
+	border: 1px solid #a0a0a0;
+	border-bottom-color: #c4c4c4;
+	border-right-color: #c4c4c4;
+	box-shadow: inset 1px 1px #dedede,inset 2px 2px #f4f4f4;
+	-o-box-shadow: inset 1px 1px #dedede,inset 2px 2px #f4f4f4;
+	-moz-box-shadow: inset 1px 1px #dedede,inset 2px 2px #f4f4f4;
+	-webkit-box-shadow: inset 1px 1px #dedede,inset 2px 2px #f4f4f4;
+}

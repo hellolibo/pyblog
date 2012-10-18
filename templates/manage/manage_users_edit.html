@@ -1,0 +1,42 @@
+$def with(page,view)
+$var title:编辑用户
+
+<div class="sub_nav"></div>
+<div class="title"><h1>编辑用户</h1></div>
+	<div class="active">
+	<a href="/manage/users">返回列表</a>
+	</div>
+	$if page['error'] and len(page['error'])>0 or False:
+		<div class="msg">
+			<ol>
+			$for er in page['error']:
+				<li>$er</li>
+			</ol>
+		</div>
+		<a href="javascript:history.go(-1);">返回</a>
+	$else:
+		<form action="" name="cate_form" method="post">
+			<table>
+				<tr>
+					<td>用户帐号：</td>
+					<td><input type="text" name="f_accountname" id="f_accountname" style="width:200px" value="$page['formdata']['accountname']"/></td>
+				</tr>
+				<tr>
+					<td>用户密码：</td>
+					<td><input type="password" name="f_password" id="f_password" style="width:200px" value="$page['formdata']['password']"/></td>
+				</tr>
+				<tr>
+					<td>用户呢称：</td>
+					<td><input type="text" name="f_dispname" id="f_dispname" style="width:200px" value="$page['formdata']['dispname']"/></td>
+				</tr>
+
+				<tr>
+					<td>用户email：</td>
+					<td><input type="text" name="f_email" id="f_email" style="width:200px" value="$page['formdata']['email']"/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="提交" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="f_id" value="$page['formdata']['id']"/>
+		</form>

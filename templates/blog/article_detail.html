@@ -1,0 +1,107 @@
+$def with(page,view)
+$ article=page['article']
+$ cookie=page['cookie']
+$ comments=page['comments']
+$var title:$article.title
+$var description:$utils.clearHtml(article.summary)
+$var keywords:$article.tags
+<div id="art_con">
+    <div class="nav">
+        <div class="n_l">
+            $if article.next:
+                &laquo;<a href="$article.next.link">$article.next.title</a>
+        </div>
+        <div class="n_r">
+            $if article.prev:
+                <a href="$article.prev.link">$article.prev.title</a>
+                &raquo;
+        </div>
+    </div>
+    <article>
+<header class="art_head">
+            <h1>$article.title</h1>
+            <h2 class="postdate">@${article.addTime.strftime('%Y-%m-%d %H:%I')}</h2>
+</header>
+        <section class="art_detail">$:article.content</section>
+        $if len(article.relateposts) > 0:
+            <aside class="relat">
+                <h3>相关文章：</h3>
+                <ul>
+                    $for r in article.relateposts:
+                    <li>
+                        <a href="$r.link">$r.title</a>
+                    </li>
+                </ul>
+            </aside>
+        <aside class="tags">
+            标签：
+        $for tag in article.tags:
+            <a href="/tag/${tag.tag}">${tag.tag}</a>
+        </aside>
+    </article>
+</div>
+<div id="comment" name="id">
+$if article.isComment:
+    <header>
+            <h3>
+                “${article.title}”共有
+                <span>${article.comment_count}</span>
+                条留言：
+            </h3>
+    </header>
+    <div id="comment_list">
+        <ul>
+            $for item in comments
+            <li name="comment-${item.id}" id="comment-${item.id}">
+                <div class="face">
+                    <img src="/static/pic/blank.gif" class="face-box" style="background-image:url(${item.gravatar_url});width:50px;height:50px;"/>
+                </div>
+                <div class="comm">
+                    <div class="head">
+                        $if item.weburl!="":
+                            <a href="${item.weburl}" target="_blank">$item.author</a>
+                        $else:
+                            $item.author
+                            on $item.addTime.strftime('%Y-%m-%d %H:%I')
+                    </div>
+                    <div class="con">$:item.content</div>
+                </div>
+            </li>
+        </ul>
+        $:page['pages']
+    </div>
+    <div id="comm_form">
+        <h3>我要留言：</h3>
+        <form action="/post_comment" method="post" id="comm_form">
+            <div>
+                <input type="text" name="f_author" id="f_author" style="width:500px" value="$cookie['author']" required placeholder="称呼" />
+            </div>
+            <div>
+                <input type="email" name="f_email" id="f_email" style="width:500px" value="$cookie['email']" required placeholder="电子邮箱" class="text"/>
+            </div>
+            <div>
+                <input type="url" class="text" name="f_weburl" id="f_weburl" style="width:500px" value="$cookie['weburl']" placeholder="网址"/>
+            </div>
+            <div>
+                <textarea name="f_content"  id="f_content" style="width:500px;height:200px;" required placeholder="评论内容"></textarea>
+            </div>
+            <input type="hidden" name="f_article_id" value="$article.id"/>
+            <div>
+                <button type="submit" class="button white">提交留言</button>
+            </div>
+        </form>
+    </div>
+$else:
+        <p>评论已关闭.</p>
+</div>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = '/static/syntaxhighlighter/scripts/clipboard.swf';
+    SyntaxHighlighter.all();
+</script>

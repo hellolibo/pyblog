@@ -1,0 +1,29 @@
+﻿$def with(page,view)
+$var title:首页
+$var description:首页
+$var keywords:首页
+<section id="art-list">
+$for item in page['articles']:
+    <article>
+        <header class="head">
+            <hgroup>
+                <h1><a href="$item.link">$item.title</a></h1>
+                <h2 class="postdate">@${item.addTime.strftime('%Y-%m-%d')}</h2>
+            </hgroup>
+        </header>
+        <p class="shortcon">
+            $item.summary
+        </p>
+        <aside class="art_info">
+            分类：
+            $for cate in item.categories:
+                <a href="/category/$cate.slug">$cate.title</a>&nbsp;
+            &nbsp;浏览：$item.readtimes &nbsp;&nbsp;
+            评论：<a href="${item.link}#comment">$item.comment_count</a> &nbsp;&nbsp;
+            标签：
+            $for tag in item.tags:
+                <a href="/tag/${tag.tag}">${tag.tag}</a>
+        </aside>
+    </article>
+$:page['pages']
+</section>

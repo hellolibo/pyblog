@@ -1,0 +1,27 @@
+$def with(page,view)
+$var title: 分类列表
+
+<div class="sub_nav"></div>
+<div class="title"><h1>分类列表(<a href="/manage/category/edit">新建</a>)</h1></div>
+<div class="active">
+分类总数:$len(page['category']) | <a href="javascript:void(0)" onclick="del('/manage/category/del?id=')">删除选中</a>
+</div>
+<table width="100%">
+	<tr>
+		<th><input type="checkbox" name="select_all" id="select_all" /></th>
+		<th>日期</th>
+		<th>分类名称</th>
+		<th>地址slug</th>
+		<th>上级</th>
+	</tr>
+$for item in page['category']:
+	<tr>
+		<td align="center"><input type="checkbox" name="sel_item" id="cate_sel_${item.id}" value='${item.id}'/></td>
+		<td>$item.addTime.strftime('%Y-%m-%d')</td>
+		<td><span style="padding-left:${item.level*20}px">[<a href="/manage/category/edit?id=$item.id">编辑</a>]<a href="/category/$item.slug" target="_blank">$item.title</a>($item.count)</span></td>
+		<td>$item.slug</td>
+		<td>
+		${item.parentc and item.parentc.title or '-'}
+		</td>
+	</tr>
+</table>

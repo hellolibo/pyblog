@@ -1,0 +1,102 @@
+$def with(page,view)
+$var title:编辑文章
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/xheditor/xheditor-zh-cn.min.js"></script>
+<div class="sub_nav"></div>
+<div class="title"><h1>编辑文章</h1></div>
+	<div class="active">
+	<a href="/manage/article">返回列表</a>
+	</div>
+	$if page['error'] and len(page['error'])>0 or False:
+		<div class="msg">
+			<ol>
+			$for er in page['error']:
+				<li>$er</li>
+			</ol>
+		</div>
+		<a href="javascript:history.go(-1);">返回</a>
+	$else:
+		<table>
+			<tr>
+				<td><strong>上传文件：</strong></td>
+				<td>
+				<form action="/manage/upload" method="post" enctype="multipart/form-data" id="f_upfile" target="upfile_iframe">
+				<input type="file" name="f_file" id="f_file" />
+				<input type="hidden" name="f_mode" value="ajax" />
+				<input type="submit" value="上传"/>
+			</form>
+			<iframe frameborder="0" name="upfile_iframe" height="0" width="0" style="visibility:hidden"></iframe>
+				</td>
+			</tr>
+		</table>
+		<form action="" name="article_form" method="post">
+			<table>
+				<tr>
+					<td>所属目录：</td>
+					<td>
+					<ul>
+					$for c in page["category"]:
+						$if c.id in page['formdata']['cateids']:
+							<li style="padding-left:${10*c.level}px"><input type="checkbox" name="f_cateid" id="f_cateid_$c.id" value="$c.id" checked="checked"/>$c.title</li>
+						$else:
+							<li style="padding-left:${10*c.level}px"><input type="checkbox" name="f_cateid" id="f_cateid_$c.id" value="$c.id"/>$c.title</li>
+					</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>标 题：</td>
+					<td><input type="text" name="f_title" id="f_title" style="width:500px" value="$page['formdata']['title']"/></td>
+				</tr>
+				<tr>
+					<td>文章内容：</td>
+					<td><textarea name="f_content" id="f_content" style="width:500px;height:400px;" >${page['formdata']['content']}</textarea></td>
+				</tr>
+				<tr>
+					<td>文章摘要：</td>
+					<td><textarea name="f_summary" id="f_summary" style="width:500px;height;200px;">${page['formdata']['summary']}</textarea></td>
+				</tr>
+				<tr>
+					<td>关键词：</td>
+					<td><input type="text" name="f_tags" id="f_tags" style="width:500px" value="$page['formdata']['tags']"/></td>
+				</tr>
+				<tr>
+					<td>访问地址：</td>
+					<td><input type="text" name="f_slug" id="f_slug" style="width:500px" value="$page['formdata']['slug']"/></td>
+				</tr>
+ 				<tr>
+					<td>模版名称：</td>
+					<td><input type="text" name="f_template" id="f_template" style="width:500px" value="$page['formdata']['template']"/></td>
+				</tr>
+				<tr>
+					<td>选项：</td>
+					<td><label for="a_published"> 
+					$if page['formdata']['published']:
+						<input type="checkbox" name="f_published" id="f_published" checked="checked" value='1'/>
+					$else:
+						<input type="checkbox" name="f_published" id="f_published" value='1'/>
+					公开</label>  <label for="a_istop">
+					$if page['formdata']['istop']:
+						<input type="checkbox" name="f_istop" id="f_istop" checked="checked" value="1"/>
+					$else:
+						<input type="checkbox" name="f_istop" id="f_istop" value="1"/>
+					置顶</label> <label for="a_iscomment">
+					$if page['formdata']['iscomment']:
+						<input type="checkbox" name="f_iscomment" id="f_iscomment" checked="checked" value="1"/>
+					$else:
+						<input type="checkbox" name="f_iscomment" id="f_iscomment" value="1"/>
+					允许评论</label></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="提交" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="f_id" value="$page['formdata']['id']"/>
+		</form>
+<script>
+var editor=jQuery('#f_content').xheditor({tools:'mfull',skin:'default',sourceMode:true});
+function insertImg(html){
+	editor.pasteHTML(html);
+	jQuery("#f_file").val('');
+}
+</script>

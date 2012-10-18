@@ -1,0 +1,56 @@
+$def with(page,view)
+$var title:编辑分类
+
+<div class="sub_nav"></div>
+<div class="title"><h1>编辑分类</h1></div>
+	<div class="active">
+	<a href="/manage/category">返回列表</a>
+	</div>
+	$if page['error'] and len(page['error'])>0 or False:
+		<div class="msg">
+			<ol>
+			$for er in page['error']:
+				<li>$er</li>
+			</ol>
+		</div>
+		<a href="javascript:history.go(-1);">返回</a>
+	$else:
+		<form action="" name="cate_form" method="post">
+			<table>
+				<tr>
+					<td>上级目录：</td>
+					<td><select name="f_parent" id="f_parent">
+						<option value="">选择上级目录</option>
+					$for c in page["category"]:
+						$if c.id==page['formdata']['parent_id']:
+							<option value="$c.id" selected="selected" id='c_$c.id'>${"-"*c.level} $c.title</option>
+						$else:
+							<option value="$c.id" id='c_$c.id'>${"-"*c.level} $c.title</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>分类名称：</td>
+					<td><input type="text" name="f_title" id="f_title" style="width:200px" value="$page['formdata']['title']"/></td>
+				</tr>
+				<tr>
+					<td>分类介绍：</td>
+					<td><textarea name="f_description" id="f_description" cols="30" rows="10">$page['formdata']['description']</textarea></td>
+				</tr>
+				<tr>
+					<td>分类关键词：</td>
+					<td><input type="text" name="f_keyword" id="f_keyword" style="width:200px" value="$page['formdata']['keyword']"/></td>
+				</tr>
+				<tr>
+					<td>分类地址：</td>
+					<td><input type="text" name="f_slug" id="f_slug" style="width:200px" value="$page['formdata']['slug']"/></td>
+				</tr>
+				<tr>
+					<td>排序：</td>
+					<td><input type="text" name="f_order" id="f_order" style="width:50px" value="$page['formdata']['order']" />越小越靠前</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="提交" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="f_id" value="$page['formdata']['id']"/>
+		</form>

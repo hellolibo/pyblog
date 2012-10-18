@@ -1,0 +1,36 @@
+$def with(content)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>${content.title}_后台管理</title>
+	<style type="text/css">
+	td,th{border:1px solid #efefef;padding:4px;}
+	</style>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="top">
+		<h2>$blogtitle</h2>
+		<h3><a href="/logout/">退出</a></h3>
+		</div>
+		<div class="nav">
+			<a href="/manage/article/edit">写文章</a>
+			<a href="/manage/article">所有文章</a>
+			<a href="/manage/category">分类管理</a>
+			<a href="/manage/comments">所有评论</a>
+			<a href="/manage/media">文件管理</a>
+			<a href="/manage/links">链接管理</a>
+			<a href="/manage/config">配置信息</a>
+			<a href="/manage/users">用户管理</a>
+		</div>
+		<div class="content">
+			$:content
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+	<script type="text/javascript" src="/static/js/manage_global.js"></script>
+</body>
+</html>

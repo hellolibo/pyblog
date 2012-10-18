@@ -1,0 +1,16 @@
+﻿$def with(page,view)
+$var title:$page["list_title"]
+$var description:$page["list_description"]
+$var keywords:$page["list_keywords"]
+<div class="art_list">
+	<header>
+		<h1>$page["list_title"]</h1>
+	</header>
+    <ul>
+    $for item in page['articles']:
+    	<li>
+            <a href="$item.link">$item.title</a><span class="postdate">@${item.addTime.strftime('%Y-%m-%d')}</span><span class="commentcount">(评论：<a href="${item.link}#comment">$item.comment_count</a>)</span>
+    	</li>
+    </ul>
+$:page['pages']
+</div>
